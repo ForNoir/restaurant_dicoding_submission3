@@ -22,6 +22,6 @@ class RestaurantListSearch {
   Map<String, dynamic> toJson() => {
         'error': error,
         'founded': founded,
-        'restaurants': List<dynamic>.from(restaurants.map((e) => e.toJson())),
+        'restaurants': List<dynamic>.from(restaurants.map((x) => x.toJson())),
       };
 }

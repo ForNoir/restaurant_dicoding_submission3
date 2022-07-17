@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:restaurant_dicoding_submission3/api/respond/restaurant_list_respond.dart';
 import 'package:rxdart/rxdart.dart';
 
+import 'package:restaurant_dicoding_submission3/api/respond/restaurant_list_respond.dart';
 import '../../model/restaurant.dart';
 import '../../utils/navigations.dart';
 
@@ -23,9 +23,16 @@ class NotificationHelper {
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var initializationSettingsAndroid =
         const AndroidInitializationSettings('app_icon');
+    var initializationSettingsIOS = const IOSInitializationSettings(
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false,
+    );
     var initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
     );
+
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onSelectNotification: (String? payload) async {
       if (payload != null) {
@@ -50,8 +57,11 @@ class NotificationHelper {
       styleInformation: const DefaultStyleInformation(true, true),
     );
 
+    var iOSPlatformChannelSpecifics = const IOSNotificationDetails();
+
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
+      iOS: iOSPlatformChannelSpecifics,
     );
 
     var titleNotifications = '<b>Restaurant Dip<b>';
