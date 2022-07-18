@@ -48,7 +48,7 @@ class Api {
       } else {
         throw Exception('Gagal untuk load hasil search');
       }
-    } catch (e) {
+    } on Error {
       rethrow;
     }
   }

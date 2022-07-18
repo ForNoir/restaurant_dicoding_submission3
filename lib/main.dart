@@ -19,6 +19,7 @@ import 'package:restaurant_dicoding_submission3/screens/ui/home_tab_restaurant.d
 import 'package:restaurant_dicoding_submission3/screens/ui/restaurant_detail_page.dart';
 import 'package:restaurant_dicoding_submission3/screens/ui/restaurant_search_page.dart';
 import 'package:restaurant_dicoding_submission3/screens/ui/setting_page_restaurant.dart';
+import 'package:restaurant_dicoding_submission3/screens/ui/splash_screen.dart';
 import 'package:restaurant_dicoding_submission3/utils/backgrounds_service.dart';
 import 'package:restaurant_dicoding_submission3/utils/navigations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -85,8 +86,9 @@ class _MyAppState extends State<MyApp> {
                     ));
               },
               navigatorKey: navigatorKey,
-              initialRoute: HomeTabRestaurant.routeName,
+              initialRoute: SplashScreen.routeName,
               routes: {
+                SplashScreen.routeName: (context) => const SplashScreen(),
                 HomeTabRestaurant.routeName: (context) =>
                     const HomeTabRestaurant(),
                 FavoritePageRestaurant.routeName: (context) =>

@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_dicoding_submission3/api/provider/restaurant_database_provider.dart';
 import 'package:restaurant_dicoding_submission3/screens/ui/restaurant_detail_page.dart';
 import 'package:restaurant_dicoding_submission3/screens/widget/card_custom.dart';
+import 'package:restaurant_dicoding_submission3/screens/widget/platform_widget.dart';
 import 'package:restaurant_dicoding_submission3/utils/constant.dart';
 import 'package:restaurant_dicoding_submission3/utils/result_state.dart';
 
@@ -17,11 +19,24 @@ class FavoritePageRestaurant extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
     ));
+    return PlatformWidget(androidBuilder: _buildAndroid, iOSBuilder: _buildiOS);
+  }
+
+  Widget _buildAndroid(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Favorite'),
       ),
       body: _buildList(context),
+    );
+  }
+
+  Widget _buildiOS(BuildContext context) {
+    return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Favorite'),
+      ),
+      child: _buildList(context),
     );
   }
 

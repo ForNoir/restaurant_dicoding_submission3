@@ -1,6 +1,5 @@
 import 'dart:isolate';
 import 'dart:ui';
-
 import 'package:http/http.dart';
 import 'package:restaurant_dicoding_submission3/api/api.dart';
 import 'package:restaurant_dicoding_submission3/database/helper/notification_helper.dart';

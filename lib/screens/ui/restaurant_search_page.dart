@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_dicoding_submission3/api/provider/restaurant_search_provider.dart';

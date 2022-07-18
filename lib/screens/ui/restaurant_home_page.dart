@@ -40,9 +40,10 @@ class RestaurantHomePage extends StatelessWidget {
               builder: (context, state, _) {
                 if (state.state == ResultState.loading) {
                   return const Center(
-                    child: CircularProgressIndicator(),
+                    child: CircularProgressIndicator(), // Loading Widget
                   );
                 } else if (state.state == ResultState.error) {
+                  // Error Widget
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
