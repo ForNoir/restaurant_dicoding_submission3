@@ -50,9 +50,13 @@ class _CardCustomState extends State<CardCustom> {
                 Container(
                   margin: const EdgeInsets.only(left: 16),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(widget.name),
+                      Text(
+                        widget.name,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
                       Text(widget.city),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
