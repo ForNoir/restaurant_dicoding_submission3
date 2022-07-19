@@ -30,7 +30,8 @@ class Api {
       if (response.statusCode == 200) {
         return RestaurantListSearch.fromJson(json.decode(response.body));
       } else {
-        throw Exception('Gagal untuk load Search');
+        return RestaurantListSearch(
+            error: false, founded: 0, restaurants: List.empty());
       }
     } catch (e) {
       rethrow;

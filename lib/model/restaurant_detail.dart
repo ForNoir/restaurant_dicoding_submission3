@@ -60,7 +60,7 @@ class Restaurant {
       categories: List<Category>.from(
           json['categories'].map((x) => Category.fromJson(x))),
       menus: Menus.fromJson(json['menus']),
-      rating: json['rating'],
+      rating: json['rating'].toDouble(),
       customerReviews: List<CustomerReviews>.from(
           json['customerReviews'].map((x) => CustomerReviews.fromJson(x))));
 
