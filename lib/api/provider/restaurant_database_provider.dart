@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:restaurant_dicoding_submission3/database/database_helper.dart';
 import 'package:restaurant_dicoding_submission3/model/restaurant.dart';
@@ -34,9 +37,18 @@ class RestaurantDatabaseProvider extends ChangeNotifier {
     try {
       await databaseHelper.insertFavorite(restaurants);
       getFavorite();
-    } catch (e) {
+    } on TimeoutException {
       _state = ResultState.error;
-      _message = 'Terjadi Error, coba lagi $e';
+      _message = 'Terjadi timeout, mohon coba lagi';
+      notifyListeners();
+    } on SocketException {
+      _state = ResultState.error;
+      _message =
+          'Tidak ada internet, nyalakan wifi atau internet dan coba lagi';
+      notifyListeners();
+    } on Error catch (e) {
+      _state = ResultState.error;
+      _message = e.toString();
       notifyListeners();
     }
   }
@@ -50,9 +62,18 @@ class RestaurantDatabaseProvider extends ChangeNotifier {
     try {
       await databaseHelper.removeFavorite(id);
       getFavorite();
-    } catch (e) {
+    } on TimeoutException {
       _state = ResultState.error;
-      _message = 'Terjadi Error, coba lagi $e';
+      _message = 'Terjadi timeout, mohon coba lagi';
+      notifyListeners();
+    } on SocketException {
+      _state = ResultState.error;
+      _message =
+          'Tidak ada internet, nyalakan wifi atau internet dan coba lagi';
+      notifyListeners();
+    } on Error catch (e) {
+      _state = ResultState.error;
+      _message = e.toString();
       notifyListeners();
     }
   }

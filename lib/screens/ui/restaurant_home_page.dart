@@ -81,7 +81,10 @@ class RestaurantHomePage extends StatelessWidget {
                         rating: response.rating,
                         onPress: () {
                           Navigator.pushNamed(
-                              context, RestaurantDetailPage.routeName);
+                            context,
+                            RestaurantDetailPage.routeName,
+                            arguments: response,
+                          );
                         },
                       );
                     },

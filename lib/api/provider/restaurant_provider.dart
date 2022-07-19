@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:restaurant_dicoding_submission3/api/api.dart';
@@ -35,10 +38,19 @@ class RestaurantProvider extends ChangeNotifier {
         notifyListeners();
         return _restaurants = restaurant;
       }
-    } catch (e) {
+    } on TimeoutException {
       _state = ResultState.error;
       notifyListeners();
-      return _message = 'Terjadi error, mohon coba lagi \n $e';
+      return _message = 'Terjadi timeout, mohon coba lagi';
+    } on SocketException {
+      _state = ResultState.error;
+      notifyListeners();
+      return _message =
+          'Tidak ada internet, nyalakan wifi atau internet dan coba lagi';
+    } on Error catch (e) {
+      _state = ResultState.error;
+      notifyListeners();
+      return _message = e.toString();
     }
   }
 }
