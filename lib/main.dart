@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,9 +36,11 @@ void main() async {
 
   service.initializedIsolate();
 
-  AndroidAlarmManager.initialize();
-  await notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
+  if (Platform.isAndroid) {
+    await AndroidAlarmManager.initialize();
+  }
 
+  await notificationHelper.initNotifications(flutterLocalNotificationsPlugin);
   runApp(const MyApp());
 }
 

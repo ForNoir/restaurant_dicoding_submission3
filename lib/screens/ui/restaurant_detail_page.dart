@@ -9,7 +9,6 @@ import 'package:restaurant_dicoding_submission3/screens/widget/platform_widget.d
 import 'package:restaurant_dicoding_submission3/utils/result_state.dart';
 import 'package:restaurant_dicoding_submission3/utils/theme.dart';
 import 'package:transparent_image/transparent_image.dart';
-
 import '../../utils/constant.dart';
 
 class RestaurantDetailPage extends StatefulWidget {
@@ -26,7 +25,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
   @override
   void initState() {
     Future.microtask(() {
-      RestaurantDetailProvider provider = Provider.of(
+      RestaurantDetailProvider provider = Provider.of<RestaurantDetailProvider>(
         context,
         listen: false,
       );
@@ -69,7 +68,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                             builder: (context, provider, _) {
                               if (provider.state == ResultState.loading) {
                                 return const Center(
-                                  child: CircularProgressIndicator(),
+                                   child: CircularProgressIndicator(),
                                 );
                               } else if (provider.state ==
                                   ResultState.hasData) {
@@ -328,7 +327,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
     );
   }
 
-  Widget _buildDrinkMenu(BuildContext context, List<Category> drinks) {
+  Widget _buildDrinkMenu(BuildContext context, List<Category> foods) {
     return Column(
       children: [
         const SizedBox(
@@ -338,7 +337,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
           height: 64,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: drinks.length,
+            itemCount: foods.length,
             itemBuilder: (context, index) {
               return Card(
                 child: Padding(
@@ -346,7 +345,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(drinks[index].name),
+                      Text(foods[index].name),
                     ],
                   ),
                 ),
