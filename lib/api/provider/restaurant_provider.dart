@@ -33,7 +33,7 @@ class RestaurantProvider extends ChangeNotifier {
       } else {
         _state = ResultState.hasData;
         notifyListeners();
-        return _restaurants = restaurants;
+        return _restaurants = restaurant;
       }
     } catch (e) {
       _state = ResultState.error;

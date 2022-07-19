@@ -52,22 +52,29 @@ class _CardCustomState extends State<CardCustom> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        widget.rating.toString(),
-                      ),
-                      const SizedBox(
-                        width: 8,
-                      ),
-                      RatingBar.builder(
-                        allowHalfRating: true,
-                        ignoreGestures: true,
-                        minRating: 1,
-                        maxRating: 5,
-                        itemCount: 5,
-                        itemSize: 14,
-                        initialRating: widget.rating,
-                        itemBuilder: (context, _) => const Icon(Icons.star),
-                        onRatingUpdate: (rating) {},
+                      Text(widget.name),
+                      Text(widget.city),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            widget.rating.toString(),
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          RatingBar.builder(
+                            allowHalfRating: true,
+                            ignoreGestures: true,
+                            minRating: 1,
+                            maxRating: 5,
+                            itemCount: 5,
+                            itemSize: 14,
+                            initialRating: widget.rating,
+                            itemBuilder: (context, _) => const Icon(Icons.star),
+                            onRatingUpdate: (rating) {},
+                          ),
+                        ],
                       ),
                     ],
                   ),

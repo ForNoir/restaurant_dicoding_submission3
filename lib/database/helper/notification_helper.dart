@@ -22,7 +22,7 @@ class NotificationHelper {
   Future<void> initNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
     var initializationSettingsAndroid =
-        const AndroidInitializationSettings('defaultIcon');
+        const AndroidInitializationSettings('app_icon');
     var initializationSettingsIOS = const IOSInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
